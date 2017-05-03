@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/action_profile"
+            android:checked="false"
+            android:icon="@drawable/ic_user"
+            android:title="Ver Perfil"
+            />
+
+        <item
+            android:id="@+id/action_map"
+            android:checked="false"
+            android:icon="@drawable/ic_map"
+            android:title="Mapa"
+            />
+
+        <item
+            android:id="@+id/action_logout"
+            android:checked="false"
+            android:title="Cerrar Sesion"
+            />
+        <!--<item
+            android:id="@+id/nav_productos"
+            android:icon="@drawable/ic_store"
+            android:title="@string/productos_item" />
+        <item
+            android:id="@+id/nav_carrito"
+            android:icon="@drawable/ic_shopping_cart"
+            android:title="@string/compras_item" />
+        <item
+            android:id="@+id/nav_ordenes"
+            android:icon="@drawable/ic_truck"
+            android:title="@string/ordenes_item" />
+        <item
+            android:id="@+id/nav_facturas"
+            android:icon="@drawable/ic_file_document"
+            android:title="@string/facturas_item" />
+
+        &lt;!&ndash; Sección de configuración &ndash;&gt;
+        <item
+            android:id="@+id/configuration_section"
+            android:title="@string/configuracion_item">
+            <menu>
+                <item
+                    android:id="@+id/nav_log_out"
+                    android:icon="@android:drawable/ic_lock_power_off"
+                    android:title="@string/log_out_item" />
+            </menu>
+        </item>-->
+    </group>
+
+</menu>

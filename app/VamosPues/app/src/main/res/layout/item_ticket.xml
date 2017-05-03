@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="wrap_content">
+
+    <LinearLayout android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:text="PLATINO"
+                android:id="@+id/location_label"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Aforo: "
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/capacity_label"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:textSize="22sp"
+                android:id="@+id/price_label"
+                android:text="$40.000 "
+                android:textColor="@color/colorAccent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDivider"/>
+
+</LinearLayout>

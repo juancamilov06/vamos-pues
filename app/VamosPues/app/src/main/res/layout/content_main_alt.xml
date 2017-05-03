@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <co.vamospues.vamospues.helpers.GillSansLightTextView
+                        android:layout_width="wrap_content"
+                        android:text="ELIGE TU "
+                        android:textSize="20sp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:layout_width="wrap_content"
+                        android:textSize="20sp"
+                        android:text="RUMBA POR"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content">
+
+                <ImageView app:srcCompat="@drawable/music_filter"
+                    android:id="@+id/music_filter_image"
+                    android:transitionName="toolbar_transition"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout android:id="@+id/music_button"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:text="Musica"
+                        android:textSize="24sp"
+                        android:gravity="start|center_vertical"
+                        android:paddingLeft="32dp"
+                        android:paddingStart="32dp"
+                        android:layout_weight="0.2"
+                        android:textColor="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView android:layout_weight="0.8"
+                        android:src="@drawable/filter_arrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView app:srcCompat="@drawable/zone_filter"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout android:id="@+id/zone_button"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:text="Zona"
+                        android:textSize="24sp"
+                        android:gravity="start|center_vertical"
+                        android:paddingLeft="32dp"
+                        android:paddingStart="32dp"
+                        android:layout_weight="0.2"
+                        android:textColor="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView android:layout_weight="0.8"
+                        android:src="@drawable/filter_arrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView app:srcCompat="@drawable/money_filter"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout android:id="@+id/budget_button"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:text="Presupuesto"
+                        android:textSize="24sp"
+                        android:gravity="start|center_vertical"
+                        android:paddingLeft="32dp"
+                        android:paddingStart="32dp"
+                        android:layout_weight="0.2"
+                        android:textColor="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView android:layout_weight="0.8"
+                        android:src="@drawable/filter_arrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView app:srcCompat="@drawable/event_filter"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout android:id="@+id/events_button"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:text="Eventos"
+                        android:textSize="24sp"
+                        android:gravity="start|center_vertical"
+                        android:paddingLeft="32dp"
+                        android:paddingStart="32dp"
+                        android:layout_weight="0.2"
+                        android:textColor="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView android:layout_weight="0.8"
+                        android:src="@drawable/filter_arrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

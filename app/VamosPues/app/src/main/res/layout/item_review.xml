@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout android:padding="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/name_label"
+                android:text="USER NAME"
+                android:textSize="18sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/date_label"
+                android:text="XXXX/XX/XX"
+                android:textSize="16sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:id="@+id/content_label"
+                android:textColor="@color/colorWhite"
+                android:text="Prueba"
+                android:ellipsize="marquee"
+                android:maxLines="5"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_weight="0.7"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView app:srcCompat="@drawable/ic_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_marginTop="8dp"
+                android:text="5"
+                android:id="@+id/rating_label"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDivider"/>
+
+</LinearLayout>

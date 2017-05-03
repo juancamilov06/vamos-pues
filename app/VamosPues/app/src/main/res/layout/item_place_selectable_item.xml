@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="match_parent" android:id="@+id/name_label"
+                android:textSize="18sp"
+                android:gravity="end"
+                android:text="Name"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout android:gravity="end" android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content" android:id="@+id/price_label"
+                    android:textSize="18sp"
+                    android:gravity="end"
+                    android:text="$20000"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="18sp"
+                    android:gravity="end" android:id="@+id/discount_label"
+                    android:text="-20%"
+                    android:textColor="@color/colorAccent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:background="@color/colorAccentTransparent"
+            android:layout_width="match_parent"
+            android:id="@+id/selected_background"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <ImageView app:srcCompat="@drawable/ic_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDivider"/>
+
+</LinearLayout>

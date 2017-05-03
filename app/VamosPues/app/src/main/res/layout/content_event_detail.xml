@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="co.vamospues.vamospues.main.EventDetailActivity"
+    tools:showIn="@layout/activity_event_detail">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <co.vamospues.vamospues.helpers.GillSansLightTextView
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:textSize="18sp"
+            android:id="@+id/info_label"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:text="INFORMACION "
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout android:padding="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView app:srcCompat="@drawable/ic_calendar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="2017/19/07"
+                        android:id="@+id/date_label"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                    <co.vamospues.vamospues.helpers.GillSansLightTextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:text="08:00 PM"
+                        android:id="@+id/start_label"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout android:padding="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView app:srcCompat="@drawable/ic_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="INFORMACION "
+                        android:textSize="18sp"
+                        android:id="@+id/contact_label"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/location_button"
+                android:layout_height="match_parent">
+
+                <ImageView app:srcCompat="@drawable/ic_event_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+
+                    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                        android:layout_width="wrap_content"
+                        android:textSize="18sp"
+                        android:text="LUGAR"
+                        android:id="@+id/name_label"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                    <co.vamospues.vamospues.helpers.GillSansLightTextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:text="CRR 90 N 12 23"
+                        android:id="@+id/address_label"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                    <co.vamospues.vamospues.helpers.GillSansLightTextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:text="¿Como llegar?"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:text="LOCALIDADES DEL "
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:text="EVENTO"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/tickets_list_view"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

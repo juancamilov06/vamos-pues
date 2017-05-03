@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="edittext_background">#DDDBDB</color>
+    <color name="edittext_pressed">#DDDBD9</color>
+    <color name="edittext_text_color">#708991</color>
+    <color name="edittext_hint_color">#B4B4B4</color>
+    <color name="colorTransparent">#44F4F4F4</color>
+    <color name="colorBlackTransparent">#CC000000</color>
+    <color name="colorAccentTransparent">#66EE314C</color>
+    <color name="colorFullTransparent">#00000000</color>
+    <color name="colorPrimary">#131313</color>
+    <color name="colorDivider">#171717</color>
+    <color name="colorPrimaryDark">#090909</color>
+    <color name="colorAccent">#EE314C</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorFacebookBlue">#3B5998</color>
+</resources>

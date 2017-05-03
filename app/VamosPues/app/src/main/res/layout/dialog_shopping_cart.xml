@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:background="@color/colorPrimaryDark">
+
+        <LinearLayout android:padding="16dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:text="TOTAL DEL PEDIDO: "
+                    android:layout_margin="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/total_label"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:padding="16dp"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/ic_shopping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:text="CARRITO DE "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:text="COMPRAS"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <ImageView app:srcCompat="@drawable/ic_shopping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/shopping_cart_list_view"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/finish_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="Comprar"
+                android:layout_weight="0.5"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

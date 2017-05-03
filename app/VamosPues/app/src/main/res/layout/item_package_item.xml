@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_height="wrap_content">
+
+    <LinearLayout android:paddingLeft="36dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingRight="8dp"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="start"
+            android:layout_height="wrap_content">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:text="Garrafa de aguardiente Antioqueño"
+                android:textSize="25sp"
+                android:id="@+id/name_label"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/quantity_label"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:text="x 20 unidades"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="end"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text="Precio C/U: "
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text=""
+                    android:id="@+id/price_label"
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="4dp"
+                android:gravity="end"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="Total: "
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text="40,000 "
+                    android:textSize="18sp"
+                    android:id="@+id/total_label"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDivider"/>
+
+</LinearLayout>

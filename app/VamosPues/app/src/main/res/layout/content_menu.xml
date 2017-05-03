@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/menu_content_scroll"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="co.vamospues.vamospues.main.MenuActivity"
+    tools:showIn="@layout/activity_menu">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <FrameLayout android:id="@+id/cocktails_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/cocktails_bg"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+
+            <LinearLayout android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:padding="16dp" android:orientation="horizontal"
+                android:layout_height="match_parent">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:text="Cocteles"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView app:srcCompat="@drawable/filter_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cocktails_list_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/cocktails_not_found_view"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/ic_searching"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:text="Esta discoteca no tiene cocteles en su menu"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <FrameLayout android:id="@+id/national_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/national_bg"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+
+            <LinearLayout android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:padding="16dp" android:orientation="horizontal"
+                android:layout_height="match_parent">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:text="Nacional"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView app:srcCompat="@drawable/filter_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/national_list_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/national_not_found_view"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/ic_searching"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:text="Esta discoteca no tiene licores nacionales en su menu"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <FrameLayout android:id="@+id/international_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/international_bg"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent" />
+
+            <LinearLayout android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:padding="16dp" android:orientation="horizontal"
+                android:layout_height="match_parent">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:text="Internacional"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView app:srcCompat="@drawable/filter_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/international_list_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout android:orientation="vertical"
+            android:visibility="visible"
+            android:id="@+id/international_not_found_view"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView app:srcCompat="@drawable/ic_searching"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:padding="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:text="Esta discoteca no tiene licores internaciones en su menu"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:padding="16dp"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView android:layout_gravity="top|end"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_cancel"
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/profile_image"
+        android:layout_marginTop="8dp"
+        app:civ_border="false"
+        android:layout_width="100dp"
+        android:adjustViewBounds="false"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"/>
+
+    <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/name_label"
+        android:textColor="@color/colorWhite"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

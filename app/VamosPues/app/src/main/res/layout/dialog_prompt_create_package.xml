@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:background="@color/colorPrimaryDark">
+
+        <LinearLayout android:padding="16dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent" android:gravity="center"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:text="PEDIDO"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="¿Deseas editar o eliminar el producto del pedido?"
+                android:layout_margin="8dp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/delete_button"
+                style="?android:textAppearanceSmall"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Eliminar"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/edit_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="Editar"
+                android:layout_weight="0.5"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

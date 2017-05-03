@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.vamospues.vamospues">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".application.VamosPuesApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".main.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".main.LoginActivity" />
+        <activity android:name=".main.MainActivity" />
+        <activity
+            android:name=".main.MusicActivity"
+            android:label="@string/title_activity_music"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.ResultsActivity"
+            android:label="@string/title_activity_results"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.ZoneActivity"
+            android:label="@string/title_activity_zone"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".main.PortalActivity" />
+        <activity android:name=".main.PackagesActivity" />
+        <activity
+            android:name=".main.MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.InfoActivity"
+            android:label="@string/title_activity_info" />
+        <activity
+            android:name=".main.ReviewActivity"
+            android:label="@string/title_activity_review"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".main.EventActivity" />
+        <activity
+            android:name=".main.PackageDetailActivity"
+            android:label="@string/title_activity_package_detail"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.CreatePackageActivity"
+            android:label="@string/title_activity_create_package"
+            android:theme="@style/AppTheme" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".main.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.EventDetailActivity"
+            android:label="@string/title_activity_event_detail"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".main.DirectionsActivity" />
+        <activity
+            android:name=".main.MapActivity"
+            android:label="@string/title_activity_map"
+            android:theme="@style/AppTheme"></activity>
+    </application>
+
+</manifest>
