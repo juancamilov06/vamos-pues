@@ -5,8 +5,7 @@ package co.vamospues.vamospues.enums;
  */
 
 public class Services {
-
-    public static final String BASE_URL = "http://192.168.1.63/api/";
+    public static final String BASE_URL = "http://192.168.1.12/api/";
     public static final String BASE_DATA_SERVICE = "basic";
     public static final String AUTH_LOGIN_SERVICE = "auth/login";
     public static final String AUTH_CREATE_SERVICE = "auth/create";
@@ -15,5 +14,7 @@ public class Services {
     public static final String EVENT_SERVICE = "events/find";
     public static final String PROFILE_BASIC_INFO_SERVICE = "user/profile";
     public static final String CHANGE_PHONE_SERVICE = "user/phone/update";
-    
+    public static final String GET_FILTERED_PROMOS_SERVICE = "promotions/filtered";
+    public static final String GET_PROMOS_SERVICE = "promotions";
+
 }

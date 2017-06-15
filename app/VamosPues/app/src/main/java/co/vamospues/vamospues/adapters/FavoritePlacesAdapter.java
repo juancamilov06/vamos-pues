@@ -104,7 +104,7 @@ public class FavoritePlacesAdapter extends RecyclerView.Adapter<FavoritePlacesAd
             });
 
             nameLabel.setText(place.getName());
-            Picasso.with(context).load(place.getImageUrl()).into(background);
+            Picasso.with(context).load(place.getImageUrl()).fit().centerCrop().into(background);
         }
     }
 

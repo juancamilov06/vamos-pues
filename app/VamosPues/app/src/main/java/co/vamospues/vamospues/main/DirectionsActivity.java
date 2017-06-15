@@ -114,11 +114,11 @@ public class DirectionsActivity extends AppCompatActivity implements Permissions
             }
             if (lastLocation != null) {
                 CameraPosition position = new CameraPosition.Builder()
-                        .target(new LatLng(lastLocation)) // Sets the new camera position
-                        .zoom(17) // Sets the zoom
-                        .bearing(180) // Rotate the camera
-                        .tilt(30) // Set the camera tilt
-                        .build(); // Creates a CameraPosition from the builder
+                        .target(new LatLng(lastLocation))
+                        .zoom(17)
+                        .bearing(180)
+                        .tilt(30)
+                        .build();
 
                 map.animateCamera(CameraUpdateFactory
                         .newCameraPosition(position), 7000);

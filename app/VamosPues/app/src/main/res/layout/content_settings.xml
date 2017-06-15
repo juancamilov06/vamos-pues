@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="co.vamospues.vamospues.main.SettingsActivity"
+    tools:showIn="@layout/activity_settings">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="horizontal"
+            android:padding="16dp"
+            android:id="@+id/general_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_weight="0.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:text="GENERAL "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <ImageView app:srcCompat="@drawable/filter_arrow"
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:id="@+id/general_layout"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:layout_width="wrap_content"
+                    app:buttonTint="@color/colorWhite"
+                    android:id="@+id/notifications_box"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:text="Notificaciones"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View android:layout_height="2dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"/>
+
+            <Button android:text="CAMBIAR PREFERENCIAS"
+                android:id="@+id/prefs_button"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button android:text="ELIMINAR FAVORITOS"
+                android:id="@+id/delete_favorites_button"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="4dp"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button android:text="ELIMINAR CUENTA"
+                android:id="@+id/delete_account_button"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="32dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:padding="16dp"
+            android:id="@+id/terms_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_weight="0.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:text="TERMINOS "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="match_parent" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:text="Y CONDICIONES "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <ImageView app:srcCompat="@drawable/filter_arrow"
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:padding="16dp"
+            android:id="@+id/languages_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_weight="0.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:text="IDIOMAS "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <ImageView app:srcCompat="@drawable/filter_arrow"
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:id="@+id/languages_layout"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <ImageView app:srcCompat="@drawable/ic_usa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <ImageView app:srcCompat="@drawable/ic_spain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <ImageView app:srcCompat="@drawable/ic_france"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:padding="16dp"
+            android:id="@+id/about_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:layout_weight="0.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:text="ACERCA "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="match_parent" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:text="DE "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <ImageView app:srcCompat="@drawable/filter_arrow"
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

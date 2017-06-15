@@ -85,6 +85,8 @@
                 <ImageView app:srcCompat="@drawable/zone_filter"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
+                    android:id="@+id/zone_filter_image"
+                    android:transitionName="toolbar_transition"
                     android:layout_height="match_parent" />
 
                 <LinearLayout android:id="@+id/zone_button"
@@ -120,6 +122,8 @@
                 <ImageView app:srcCompat="@drawable/money_filter"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
+                    android:id="@+id/budget_filter_image"
+                    android:transitionName="toolbar_transition"
                     android:layout_height="match_parent" />
 
                 <LinearLayout android:id="@+id/budget_button"

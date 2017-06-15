@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView android:id="@+id/promo_image"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout android:background="@drawable/gradient_background"
+            android:layout_width="match_parent"
+            android:gravity="bottom"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:text="PROMO NAME"
+                android:id="@+id/promo_name_label"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:text="Place name"
+                android:id="@+id/place_label"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

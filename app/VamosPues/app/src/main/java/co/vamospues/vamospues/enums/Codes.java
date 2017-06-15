@@ -7,5 +7,6 @@ package co.vamospues.vamospues.enums;
 public class Codes {
 
     public final static int CODE_SUCCESSFUL = 200;
+    public final static int CODE_UNAUTHORIZED = 401;
 
 }

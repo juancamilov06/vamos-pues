@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.vamospues.vamospues.main.AboutActivity">
+
+    <ImageView android:scaleType="centerCrop"
+        app:srcCompat="@drawable/about_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/colorSemiFullBlackTransparent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:layout_weight="0.6"
+            android:layout_width="match_parent"
+            android:paddingLeft="32dp"
+            android:paddingTop="32dp"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+
+            <ImageView app:srcCompat="@drawable/ic_back"
+                android:id="@+id/back_button"
+                android:layout_width="16dp"
+                android:layout_height="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView app:srcCompat="@drawable/logo_long"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_weight="0.4"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="bottom|center_horizontal"
+            android:layout_height="match_parent"
+            android:baselineAligned="false">
+
+            <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:text="© Todos los derechos reservados"
+                android:textSize="20sp"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:text="Vamos Pues S.A.S"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

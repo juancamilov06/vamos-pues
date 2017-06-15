@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    tools:context="co.vamospues.vamospues.main.TermsActivity"
+    tools:showIn="@layout/activity_terms">
+
+    <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="wrap_content"
+                android:text="TERMINOS"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout android:padding="16dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView app:srcCompat="@drawable/logo_long"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout android:padding="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:gravity="center_horizontal"
+                    android:text="CONDICIONES DEL USUARIO"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:id="@+id/gillSansLightTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Al acceder y utilizar este servicio, usted acepta y accede a estar obligado por los términos y disposiciones de este acuerdo. Asimismo, al utilizar estos servicios particulares, usted estará sujeto a toda regla o guía de uso correspondiente que se haya publicado para dichos servicios. Toda participación en este servicio constituirá la aceptación de este acuerdo. Si no acepta cumplir con lo anterior, por favor, no lo utilice.
+"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:text="• Vamos Pues le permite registrarse con Facebook, al registrarse con esta red social, exportaremos datos como su nombre, fecha de cumpleaños, número de teléfono, correo electrónico."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="• No revelaremos ninguna información personal a terceros (excluyendo a los establecimientos a los que podemos proporcionar dicha información con el único propósito de proveer servicios al usuario y que están obligados a mantener la información confidencial hacerlo."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="• La empresa se reserva el derecho de modificar estas condiciones de vez en cuando según lo considere oportuno; así mismo, el uso permanente de la página significará su aceptación de cualquier ajuste a tales términos. Si hay algún cambio en nuestra política de privacidad, anunciaremos en nuestra página principal y en nuestra aplicación."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:text="RESERVAS EN DISCOTECAS Y BARES"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:text="¿Como funciona?"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Vamos Pues vende paquetes que incluyen entradas, licor y servicio. Al realizar la compra de un paquete con el servicio de pago de Vamos Pues, debes escoger uno de los métodos de pago para cargar dinero en el saldo de tus valores electrónicos. Una vez completado el pago, transferiremos el valor al administrador del sitio."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:text="Edad para ingresar"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Para realizar la compra de un paquete los usuarios deben ser mayores de edad, 18 o 21 años si el establecimiento lo estipula, sin embargo, los encargados de comprobar esto específicamente son las discotecas.  Si se comprueba falsedad en los documentos, Vamos Pues lo notificara a la autoridad correspondiente y no responde por reembolsos o devoluciones."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:text="Confirmacion de la reserva"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Para hacer efectiva  la reserva debes presentar en la entrada del establecimiento, el Código QR que te enviaremos al momento de confirmar tu pago en la aplicación, de presentarse cualquier problema en la confirmación de tu pago comunícate con nuestras líneas de atención.
+El usuario o su delegado es responsable de presentar el código QR en la entrada,  de no tenerlo se toma la reserva como inasistencia y no puede hacer uso del paquete. Es decisión del usuario entrar al establecimiento sin el paquete, sin embargo no podrá disfrutar de este.
+En caso de no poder asistir a la discoteca, bar o club al que reservaste en la ciudad de Medellín, quedas con saldo disponible para utilizar en el resto de sitios afiliados a nuestra empresa en un periodo máximo de (21) días, al finalizar este periodo tu saldo expira.
+El Código QR, es único y solo puede ser utilizado una vez.
+Recuerda que debe presentarse el encargado de la reserva y en caso de no poder asistir, presentarse alguna persona delegada que haya recibido el código QR en la aplicación.
+"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:text="Entrega de paquetes"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Al encargado de la reserva, el personal del sitio le entregara el paquete al confirmarse a su código QR; Una vez se haga entrega, no existen devoluciones o reembolsos por incumplimiento o fuerza mayor de los asistentes, es de exclusiva responsabilidad del usuario las entradas y el licor entregado. En caso de algún inconveniente con la entrega del paquete, favor comunicarse con nuestras líneas de atención al cliente.
+Vamos Pues entrega el paquete acorde a la cantidad de personas y licor seleccionadas en la aplicación, no existen cambios por inasistencia."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:text="Horario"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Las reservas se guardan hasta las 11:00 PM (Hora (UTC-05:00), si la persona encargada o el delegado se presentan después de esta hora, es decisión exclusiva responsabilidad del administrador permitirles el ingreso al establecimiento, ubicarlos en el sitio que les fue asignado o ubicarlos en otro lugar, Vamos Pues solo se hace responsable hasta la hora mencionada."
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:text="Precio"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="El precio está estipulado por los establecimientos en compañía de Vamos Pues, incluye los impuestos, tasas y gastos correspondientes a la transacción.
+Puede cambiar y oscilar el valor dependiendo del evento, el día y la época del año en que se realice la reserva, es decir algunos establecimientos fijan precios diferentes según el día, y ciertas condiciones como barra Libre. Vamos Pues se acopla a estas decisiones propias de cada sitio.
+"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:text="Descargo de responsabilidad"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="trabajamos con sitios de calidad, que cuenten con todos los permisos y reglamentación requeridos para operar como sitios de esparcimiento, sin embargo, los licores que compras mediante el aplicativo los venden los establecimientos, no Vamos Pues. Es responsabilidad del sitio, su calidad y legalidad.  Vamos Pues se exonera de cualquier responsabilidad legal, en cuanto al licor comercializado en los establecimientos."
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

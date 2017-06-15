@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-
         <item
             android:id="@+id/action_profile"
             android:checked="false"
@@ -18,10 +17,25 @@
             />
 
         <item
+            android:id="@+id/action_settings"
+            android:checked="false"
+            android:icon="@drawable/ic_settings"
+            android:title="Configuracion"
+            />
+
+        <item
+            android:id="@+id/action_promos"
+            android:checked="false"
+            android:icon="@drawable/ic_discount"
+            android:title="Ofertas"
+            />
+        
+        <item
             android:id="@+id/action_logout"
             android:checked="false"
             android:title="Cerrar Sesion"
             />
+
         <!--<item
             android:id="@+id/nav_productos"
             android:icon="@drawable/ic_store"
@@ -51,5 +65,4 @@
             </menu>
         </item>-->
     </group>
-
 </menu>

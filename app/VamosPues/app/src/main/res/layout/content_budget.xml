@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/menu_content_scroll"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="co.vamospues.vamospues.main.BudgetActivity"
+    tools:showIn="@layout/activity_budget">
+
+    <LinearLayout android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        
+        <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+            android:layout_width="wrap_content"
+            android:text="Hola"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content" />
+
+        <co.vamospues.vamospues.helpers.GillSansLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:text="¿De cuanto dinero dispones?"/>
+
+        <EditText android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:hint="Presupuesto"
+            android:id="@+id/budget_input"
+            android:inputType="number"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/solid_edittext" />
+
+        <Button android:text="Buscar"
+            android:id="@+id/search_budget_button"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

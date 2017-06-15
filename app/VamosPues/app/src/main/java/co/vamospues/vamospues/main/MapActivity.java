@@ -1,16 +1,24 @@
 package co.vamospues.vamospues.main;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,22 +52,61 @@ public class MapActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         placesSpinner = (Spinner) findViewById(R.id.places_spinner);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onMapReady(final MapboxMap mapboxMap) {
+                placesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Place place = places.get(position);
+                        MarkerViewOptions markerViewOptions = new MarkerViewOptions()
+                                .position(new LatLng(place.getLatitude(), place.getLongitude()))
+                                .title(place.getName())
+                                .snippet(place.getAddress());
+
+                        CameraPosition cameraPosition = new CameraPosition.Builder()
+                                .target(new LatLng(place.getLatitude(), place.getLongitude()))
+                                .zoom(17)
+                                .bearing(180)
+                                .tilt(30)
+                                .build();
+
+                        mapboxMap.animateCamera(CameraUpdateFactory
+                                .newCameraPosition(cameraPosition), 4000);
+                        mapboxMap.addMarker(markerViewOptions);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                if (places.size() > 0){
+                    Place place = places.get(0);
+                    MarkerViewOptions markerViewOptions = new MarkerViewOptions()
+                            .position(new LatLng(place.getLatitude(), place.getLongitude()))
+                            .title(place.getName())
+                            .snippet(place.getAddress());
+
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(new LatLng(place.getLatitude(), place.getLongitude()))
+                            .zoom(17)
+                            .bearing(180)
+                            .tilt(30)
+                            .build();
+
+                    mapboxMap.animateCamera(CameraUpdateFactory
+                            .newCameraPosition(cameraPosition), 4000);
+                    mapboxMap.addMarker(markerViewOptions);
+                }
             }
         });
-
         setSpinner();
     }
 
     private void setSpinner() {
         places = database.getPlaces();
-        placesSpinner.setAdapter(new PlacesMapAdapter(context, R.layout.item_place, places));
+        placesSpinner.setAdapter(new PlacesMapAdapter(context, R.layout.item_dropdown_place, places));
     }
 
 }

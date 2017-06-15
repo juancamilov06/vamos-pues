@@ -1,6 +1,8 @@
 package co.vamospues.vamospues.main;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -32,6 +34,8 @@ import java.util.List;
 
 import co.vamospues.vamospues.R;
 import co.vamospues.vamospues.adapters.TicketsAdapter;
+import co.vamospues.vamospues.database.DatabaseHandler;
+import co.vamospues.vamospues.enums.Codes;
 import co.vamospues.vamospues.enums.Services;
 import co.vamospues.vamospues.helpers.BlurTransformation;
 import co.vamospues.vamospues.helpers.GillSansLightTextView;
@@ -50,6 +54,7 @@ public class EventDetailActivity extends AppCompatActivity {
     private Event event;
     private List<Ticket> tickets = new ArrayList<>();
     private RecyclerView ticketsListView;
+    private DatabaseHandler database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,7 @@ public class EventDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event_detail);
 
         context = EventDetailActivity.this;
+        database = new DatabaseHandler(context);
         event = (Event) getIntent().getExtras().get("event");
 
         ticketsListView = (RecyclerView) findViewById(R.id.tickets_list_view);
@@ -98,17 +104,30 @@ public class EventDetailActivity extends AppCompatActivity {
         setUpTicketsList();
     }
 
+    private String getTicketsUrl(){
+        return Services.BASE_URL + "events/" + event.getId() + "/tickets?token=" + database.getToken();
+    }
+
     private void setUpTicketsList(){
-        final String GET_EVENTS_TICKET_SERVICE = "events/" + event.getId() + "/tickets";
-        StringRequest request = new StringRequest(Request.Method.GET, Services.BASE_URL + GET_EVENTS_TICKET_SERVICE, new Response.Listener<String>() {
+        final Dialog dialog = Utils.getAlertDialog(context);
+        dialog.show();
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
+
+        StringRequest request = new StringRequest(Request.Method.GET, getTicketsUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                dialog.dismiss();
                 try{
                     JSONObject responseObject = new JSONObject(response);
-                    boolean success = responseObject.getBoolean("success");
-                    if (success){
+                    int code = responseObject.getInt("code");
+                    if (code == Codes.CODE_SUCCESSFUL) {
                         JSONArray ticketsResponse = responseObject.getJSONObject("data").getJSONArray("tickets");
-                        if (ticketsResponse.length() > 0){
+                        if (ticketsResponse.length() > 0) {
                             for (int i = 0; i < ticketsResponse.length(); i++) {
                                 JSONObject currentTicket = ticketsResponse.getJSONObject(i);
                                 Ticket ticket = new Ticket();
@@ -120,9 +139,13 @@ public class EventDetailActivity extends AppCompatActivity {
                                 tickets.add(ticket);
                             }
                             setUpListView();
+                        } else {
+                            Utils.showSnackbar("No hay tiquetes ", EventDetailActivity.this, R.id.activity_event_detail);
                         }
-                    } else {
-                        Utils.showSnackbar("No hay tiquetes ", EventDetailActivity.this, R.id.activity_event_detail);
+                    }
+                    if (code == Codes.CODE_UNAUTHORIZED){
+                        Dialog dialog = Utils.getExpiredDialog(EventDetailActivity.this);
+                        dialog.show();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -132,6 +155,7 @@ public class EventDetailActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
                 error.printStackTrace();
                 Utils.showSnackbar("Error ", EventDetailActivity.this, R.id.activity_event_detail);
             }

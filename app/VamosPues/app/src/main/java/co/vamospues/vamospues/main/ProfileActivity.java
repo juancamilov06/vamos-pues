@@ -91,12 +91,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         phoneFab.setOnClickListener(this);
 
         getUserInfo();
+        getFavorites();
+    }
+
+    private String getUserInfoUrl(){
+        return Services.BASE_URL + Services.PROFILE_BASIC_INFO_SERVICE + "?token=" + database.getToken();
     }
 
     private void getUserInfo() {
         final Dialog dialog = Utils.getAlertDialog(context);
         dialog.show();
-        StringRequest request = new StringRequest(Request.Method.POST, Services.BASE_URL + Services.PROFILE_BASIC_INFO_SERVICE, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, getUserInfoUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 dialog.dismiss();
@@ -108,9 +113,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         itemOrders = dataObject.getInt("item_order_count");
                         packageOrders = dataObject.getInt("package_order_count");
                         phone = dataObject.getJSONObject("user").getString("phone");
-
-                        getFavorites();
-
                     } else {
                         Utils.showSnackbar("Error obteniendo el perfil", ProfileActivity.this, R.id.activity_profile);
                     }
@@ -152,6 +154,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    private String getChangePhoneUrl(){
+        return Services.BASE_URL + Services.CHANGE_PHONE_SERVICE + "?token=" + database.getToken();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -183,7 +189,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                         final Dialog loadingDialog = Utils.getAlertDialog(context);
                         loadingDialog.show();
-                        StringRequest request = new StringRequest(Request.Method.POST, Services.BASE_URL + Services.CHANGE_PHONE_SERVICE, new Response.Listener<String>() {
+                        StringRequest request = new StringRequest(Request.Method.POST, getChangePhoneUrl(), new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 loadingDialog.dismiss();

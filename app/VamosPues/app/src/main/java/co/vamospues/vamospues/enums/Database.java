@@ -41,6 +41,7 @@ public class Database {
     public static final String KEY_DATE = "date";
     public static final String KEY_TOTAL = "total";
     public static final String KEY_IS_REDEEMED = "is_redeemed";
+    public static final String KEY_NOTIFY = "notify";
 
     public static final String TABLE_PLACE = "place";
     public static final String TABLE_MUSIC = "music";
@@ -51,9 +52,18 @@ public class Database {
     public static final String TABLE_FAVORITES = "favorites";
     public static final String TABLE_ITEM_ORDER = "item_order";
     public static final String TABLE_ITEM_ORDER_ITEM = "item_order_item";
+    public static final String TABLE_PROMO = "active_promo";
+    public static final String TABLE_PREFS = "prefs";
+
+    public static final String CREATE_PREFS = "CREATE TABLE IF NOT EXISTS " + TABLE_PREFS + "("
+            + KEY_USER_ID + " INTEGER PRIMARY KEY NOT NULL, " + KEY_ZONE_ID + " INTEGER NOT NULL, "
+            + KEY_MUSIC_ID + " INTEGER NOT NULL, " + KEY_NOTIFY + " BOOLEAN NOT NULL)";
+
+    public static final String CREATE_PROMO = "CREATE TABLE IF NOT EXISTS " + TABLE_PROMO + "("
+            + KEY_ID + " INTEGER PRIMARY KEY NOT NULL)";
 
     public static final String CREATE_ITEM_ORDER = "CREATE TABLE IF NOT EXISTS " + TABLE_ITEM_ORDER + "("
-            + KEY_ID + " TEXT NOT NULL, " + KEY_USER_ID + " INTEGER NOT NULL, " + KEY_DATE + " TEXT NOT NULL, "
+            + KEY_ID + " INTEGER NOT NULL, " + KEY_USER_ID + " INTEGER NOT NULL, " + KEY_DATE + " TEXT NOT NULL, "
             + KEY_TOTAL + " DOUBLE NOT NULL, " + KEY_IS_REDEEMED + " BOOLEAN NOT NULL, PRIMARY KEY("
             + KEY_ID + ", " + KEY_USER_ID + "))";
 
@@ -61,7 +71,7 @@ public class Database {
             + KEY_PLACE_ITEM_ID + " INTEGER NOT NULL, " + KEY_ITEM_ORDER_ID + " TEXT NOT NULL, "
             + KEY_QUANTITY + " INTEGER NOT NULL, PRIMARY KEY (" + KEY_PLACE_ITEM_ID + ", " + KEY_ITEM_ORDER_ID + "))";
 
-    public static final String CREATE_TOKEN = "CREATE TABLE IF NOT EXISTS " + TABLE_SESSION + "("
+    public static final String CREATE_SESSION = "CREATE TABLE IF NOT EXISTS " + TABLE_SESSION + "("
              + KEY_ID + " INTEGER PRIMARY KEY NOT NULL, " + KEY_TOKEN + " TEXT NOT NULL, "
              + KEY_EXPIRE_TIME + " TEXT NOT NULL, " + KEY_MAIL + " TEXT NOT NULL, "
              + KEY_USER_ID + " INTEGER NOT NULL)";

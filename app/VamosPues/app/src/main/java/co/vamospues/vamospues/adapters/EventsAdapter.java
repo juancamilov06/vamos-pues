@@ -43,7 +43,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         Event event = events.get(position);
         holder.nameLabel.setText(event.getName());
         Picasso picasso = Picasso.with(context);
-        picasso.with(context).load(event.getImageUrl()).transform(new GrayscaleTransformation(picasso)).into(holder.eventImage);
+        picasso.with(context).load(event.getImageUrl()).fit().centerCrop().transform(new GrayscaleTransformation(picasso)).into(holder.eventImage);
     }
 
     @Override

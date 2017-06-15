@@ -106,4 +106,8 @@
     <string name="title_activity_results">Resultados</string>
     <string name="title_activity_event_detail">EventDetailActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_budget">BudgetActivity</string>
+    <string name="title_activity_budget_results">Resultados</string>
+    <string name="title_activity_settings">Configuracion</string>
+    <string name="title_activity_terms">TermsActivity</string>
 </resources>

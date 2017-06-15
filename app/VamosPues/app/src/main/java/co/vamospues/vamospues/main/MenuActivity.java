@@ -134,6 +134,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
         if (place != null) {
+
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -144,6 +145,10 @@ public class MenuActivity extends AppCompatActivity {
         } else {
             finish();
         }
+    }
+
+    private String getMenuUrl(){
+        return Services.BASE_URL + "place/" + place.getId() + "/menu?token=" + database.getToken();
     }
 
     private void setListsUp(){
@@ -158,9 +163,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        final String MENU_SERVICE = "place/" + place.getId() + "/menu";
-
-        StringRequest request = new StringRequest(Request.Method.GET, Services.BASE_URL + MENU_SERVICE, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, getMenuUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 dialog.dismiss();
@@ -170,8 +173,8 @@ public class MenuActivity extends AppCompatActivity {
                     int code = menuObject.getInt("code");
                     if (code == Codes.CODE_SUCCESSFUL){
                         JSONArray menuResponse = menuObject.getJSONObject("data").getJSONArray("menu");
+                        List<PlaceItem> placeItems = new ArrayList<>();
                         if (menuResponse.length() > 0){
-                            List<PlaceItem> placeItems = new ArrayList<>();
                             for (int i = 0; i < menuResponse.length(); i++) {
                                 JSONObject placeItemObject = menuResponse.getJSONObject(i);
 
@@ -187,28 +190,23 @@ public class MenuActivity extends AppCompatActivity {
 
                                 placeItems.add(placeItem);
                             }
-                            if (placeItems.size() > 0) {
-                                setUpListViews(placeItems);
-                            }
                         }
+                        setUpListViews(placeItems);
+                    } else {
+                        Utils.showSnackbar("Error obteniendo los datos", MenuActivity.this, R.id.activity_menu);
                     }
                 } catch (JSONException e){
+                    Utils.showSnackbar("Error obteniendo los datos", MenuActivity.this, R.id.activity_menu);
                     dialog.dismiss();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Utils.showSnackbar("Error obteniendo los datos", MenuActivity.this, R.id.activity_menu);
                 dialog.dismiss();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("place_id", String.valueOf(place.getId()));
-                return params;
-            }
-        };
+        });
         Queue.getInstance(context).addToRequestQueue(request);
     }
 

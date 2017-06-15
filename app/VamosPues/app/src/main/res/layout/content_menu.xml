@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/international_not_found_view"
             android:layout_gravity="center"
             android:gravity="center"

@@ -2,6 +2,7 @@ package co.vamospues.vamospues.main;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,6 +30,7 @@ import java.util.List;
 
 import co.vamospues.vamospues.R;
 import co.vamospues.vamospues.adapters.PackageItemsAdapter;
+import co.vamospues.vamospues.database.DatabaseHandler;
 import co.vamospues.vamospues.enums.Services;
 import co.vamospues.vamospues.helpers.GillSansLightTextView;
 import co.vamospues.vamospues.helpers.Queue;
@@ -43,6 +45,7 @@ public class PackageDetailActivity extends AppCompatActivity {
     private PlacePackage placePackage;
     private RecyclerView packageContentListView;
     private List<PackageItem> packageItems;
+    private DatabaseHandler database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class PackageDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_package_detail);
 
         context = PackageDetailActivity.this;
+        database = new DatabaseHandler(context);
         placePackage = (PlacePackage) getIntent().getExtras().get("place_package");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -73,13 +77,22 @@ public class PackageDetailActivity extends AppCompatActivity {
         setUpPackageItems();
     }
 
+    private String getPackageItemsUrl(){
+        return Services.BASE_URL + "/package/" + placePackage.getId() + "?token=" + database.getToken();
+    }
+
     private void setUpPackageItems() {
 
         final Dialog dialog = Utils.getAlertDialog(context);
         dialog.show();
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
 
-        final String PLACE_PACKAGE_CONTENT_SERVICE = "/package/" + placePackage.getId();
-        StringRequest request = new StringRequest(Request.Method.GET, Services.BASE_URL + PLACE_PACKAGE_CONTENT_SERVICE, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, getPackageItemsUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 dialog.dismiss();
@@ -87,7 +100,7 @@ public class PackageDetailActivity extends AppCompatActivity {
                     JSONObject responseObject = new JSONObject(response);
                     boolean success = responseObject.getBoolean("success");
                     if (success){
-                        JSONArray responseItems = responseObject.getJSONObject("data").getJSONArray("items");
+                        JSONArray responseItems = responseObject.getJSONArray("items");
                         if (responseItems.length() > 0){
                             packageItems = new ArrayList<>();
                             for (int i = 0; i < responseItems.length(); i++) {
@@ -106,16 +119,36 @@ public class PackageDetailActivity extends AppCompatActivity {
                             }
                             setItemsListView();
                         }
+                    } else {
+                        Snackbar.make(findViewById(R.id.activity_package_detail), "Error obteniendo los productos", Snackbar.LENGTH_LONG)
+                                .setAction("Reintentar", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        setUpPackageItems();
+                                    }
+                                }).show();
                     }
                 } catch (Exception e){
-                    Utils.showSnackbar("Error obteniendo los productos, intenta de nuevo", PackageDetailActivity.this, R.id.activity_package_detail);
+                    Snackbar.make(findViewById(R.id.activity_package_detail), "Error obteniendo los productos", Snackbar.LENGTH_LONG)
+                            .setAction("Reintentar", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                      setUpPackageItems();
+                                }
+                            }).show();
                     dialog.dismiss();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Utils.showSnackbar("Error obteniendo los productos, intenta de nuevo", PackageDetailActivity.this, R.id.activity_package_detail);
+                Snackbar.make(findViewById(R.id.activity_package_detail), "Error obteniendo los productos", Snackbar.LENGTH_LONG)
+                        .setAction("Reintentar", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setUpPackageItems();
+                            }
+                        });
                 dialog.dismiss();
             }
         });

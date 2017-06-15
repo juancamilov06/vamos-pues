@@ -123,7 +123,12 @@ public class CreatePackageActivity extends AppCompatActivity {
         ItemClickSupport.addTo(nationalListView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                nationalAdapter.notifyDataSetChanged();
+                ItemOrderItem orderItem = database.getItemOrderItem(order, nationalDrinks.get(position));
+                if (orderItem == null) {
+                    showAddItemDialog(nationalDrinks.get(position), position);
+                } else {
+                    showPromptDialog(nationalDrinks.get(position), position);
+                }
             }
         });
         nationalListView.setLayoutManager(new LinearLayoutManager(this));
@@ -151,7 +156,12 @@ public class CreatePackageActivity extends AppCompatActivity {
         ItemClickSupport.addTo(internationalListView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                internationalAdapter.notifyDataSetChanged();
+                ItemOrderItem orderItem = database.getItemOrderItem(order, internationalDrinks.get(position));
+                if (orderItem == null) {
+                    showAddItemDialog(internationalDrinks.get(position), position);
+                } else {
+                    showPromptDialog(internationalDrinks.get(position), position);
+                }
             }
         });
         internationalListView.setLayoutManager(new LinearLayoutManager(this));
@@ -187,9 +197,7 @@ public class CreatePackageActivity extends AppCompatActivity {
             createNewOrder();
 
         } else {
-
             finish();
-
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -414,6 +422,10 @@ public class CreatePackageActivity extends AppCompatActivity {
         finish();
     }
 
+    private String getMenuUrl(){
+        return Services.BASE_URL + "place/" + place.getId() + "/menu?token=" + database.getToken();
+    }
+
     private void setListsUp(){
 
         dialog.show();
@@ -426,9 +438,7 @@ public class CreatePackageActivity extends AppCompatActivity {
             }
         });
 
-        final String MENU_SERVICE = "place/" + place.getId() + "/menu";
-
-        StringRequest request = new StringRequest(Request.Method.GET, Services.BASE_URL + MENU_SERVICE, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, getMenuUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 dialog.dismiss();
@@ -462,6 +472,10 @@ public class CreatePackageActivity extends AppCompatActivity {
                             }
                         }
                     }
+                    if (code == Codes.CODE_UNAUTHORIZED){
+                        Dialog dialog = Utils.getExpiredDialog(CreatePackageActivity.this);
+                        dialog.show();
+                    }
                 } catch (JSONException e){
                     dialog.dismiss();
                 }
@@ -471,15 +485,7 @@ public class CreatePackageActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("place_id", String.valueOf(place.getId()));
-                return params;
-            }
-        };
-
+        });
         Queue.getInstance(context).addToRequestQueue(request);
     }
 

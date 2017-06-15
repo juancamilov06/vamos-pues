@@ -15,7 +15,10 @@ import co.vamospues.vamospues.models.ItemOrderItem;
 import co.vamospues.vamospues.models.ItemType;
 import co.vamospues.vamospues.models.Music;
 import co.vamospues.vamospues.models.Place;
+import co.vamospues.vamospues.models.Prefs;
+import co.vamospues.vamospues.models.Promo;
 import co.vamospues.vamospues.models.SelectablePlaceItem;
+import co.vamospues.vamospues.models.User;
 import co.vamospues.vamospues.models.Zone;
 
 /**
@@ -29,21 +32,100 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(Database.CREATE_MUSIC);
-        db.execSQL(Database.CREATE_PLACE);
-        db.execSQL(Database.CREATE_ZONE);
-        db.execSQL(Database.CREATE_URL);
-        db.execSQL(Database.CREATE_ITEM_TYPES);
-        db.execSQL(Database.CREATE_TOKEN);
-        db.execSQL(Database.CREATE_FAVORITES);
-        db.execSQL(Database.CREATE_ITEM_ORDER_ITEM);
-        db.execSQL(Database.CREATE_ITEM_ORDER);
+    public void onCreate(SQLiteDatabase database) {
+        database.execSQL(Database.CREATE_MUSIC);
+        database.execSQL(Database.CREATE_PLACE);
+        database.execSQL(Database.CREATE_ZONE);
+        database.execSQL(Database.CREATE_URL);
+        database.execSQL(Database.CREATE_ITEM_TYPES);
+        database.execSQL(Database.CREATE_SESSION);
+        database.execSQL(Database.CREATE_FAVORITES);
+        database.execSQL(Database.CREATE_ITEM_ORDER_ITEM);
+        database.execSQL(Database.CREATE_ITEM_ORDER);
+        database.execSQL(Database.CREATE_PROMO);
+        database.execSQL(Database.CREATE_PREFS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
+    
+    public void truncateDatabase(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("DELETE FROM " + Database.TABLE_MUSIC);
+        database.execSQL("DELETE FROM " + Database.TABLE_PLACE);
+        database.execSQL("DELETE FROM " + Database.TABLE_ZONE);
+        database.execSQL("DELETE FROM " + Database.TABLE_URL);
+        database.execSQL("DELETE FROM " + Database.TABLE_ITEM_TYPES);
+        database.execSQL("DELETE FROM " + Database.TABLE_SESSION);
+        database.execSQL("DELETE FROM " + Database.TABLE_FAVORITES);
+        database.execSQL("DELETE FROM " + Database.TABLE_ITEM_ORDER_ITEM);
+        database.execSQL("DELETE FROM " + Database.TABLE_ITEM_ORDER);
+        database.execSQL("DELETE FROM " + Database.TABLE_PREFS);
+    }
+
+    //--Table prefs methods begining--
+
+    public boolean insertPrefs(Prefs prefs){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        try {
+            values.put(Database.KEY_ZONE_ID, prefs.getZone().getId());
+            values.put(Database.KEY_MUSIC_ID, prefs.getMusic().getId());
+            values.put(Database.KEY_USER_ID, getCurrentUser().getId());
+            values.put(Database.KEY_NOTIFY, prefs.isNotify());
+            database.replace(Database.TABLE_PREFS, null, values);
+            return true;
+        } catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Prefs getPrefs(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + Database.TABLE_PREFS
+                + " WHERE " + Database.KEY_USER_ID + " = " + getCurrentUser().getId(), null);
+        Prefs prefs = null;
+        if (cursor.moveToFirst()){
+            prefs = new Prefs();
+            prefs.setZone(getZone(cursor.getInt(1)));
+            prefs.setMusic(getMusic(cursor.getInt(2)));
+            prefs.setNotify(cursor.getInt(3) > 0);
+        }
+        cursor.close();
+        return prefs;
+    }
+
+    //--Table prefs methods ending--
+
+    //--Table promo methods begining--
+
+    public boolean insertPromo(Promo promo){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        try {
+            values.put(Database.KEY_ID, promo.getId());
+            database.insert(Database.TABLE_PROMO, null, values);
+            return true;
+        } catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean existsPromo(int id){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + Database.TABLE_PROMO + " WHERE "
+                + Database.KEY_ID + " = " + id, null);
+        if (cursor.moveToFirst()){
+            return true;
+        }
+        cursor.close();
+        return false;
+    }
+
+    //--Table promo methods ending--
 
     //--Table token methods begining--
     public void deleteToken(){
@@ -97,6 +179,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         cursor.close();
         return 0;
+    }
+
+    private User getCurrentUser(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + Database.TABLE_SESSION, null);
+        User user = null;
+        if (cursor.moveToFirst()){
+            user = new User();
+            user.setMail(cursor.getString(3));
+            user.setId(cursor.getInt(4));
+            cursor.close();
+        }
+        cursor.close();
+        return user;
     }
 
     public void setAuthToken(String token, String time, String mail, int id){
@@ -412,6 +508,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         cursor.close();
         return place;
+    }
+
+    public List<Place> getPlacesByBudget(double budget){
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + Database.TABLE_PLACE + " WHERE "
+                + Database.KEY_MIN_BUDGET + " <= " + budget, null);
+
+        List<Place> places = new ArrayList<>();
+        if (cursor.moveToFirst()){
+            do {
+                Place place = new Place();
+                place.setId(cursor.getInt(0));
+                place.setName(cursor.getString(1));
+                place.setDescription(cursor.getString(2));
+                place.setLatitude(cursor.getDouble(3));
+                place.setLongitude(cursor.getDouble(4));
+                place.setAddress(cursor.getString(5));
+                place.setDisco(cursor.getInt(6) > 0);
+                place.setBudget(cursor.getDouble(7));
+                place.setLimitHour(cursor.getString(8));
+                place.setZone(getZone(cursor.getInt(9)));
+                place.setMusic(getMusic(cursor.getInt(10)));
+                place.setImageUrl(cursor.getString(11));
+                place.setActive(cursor.getInt(12) > 0);
+                place.setOpen(cursor.getString(13));
+                place.setClose(cursor.getString(14));
+                places.add(place);
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+        return places;
     }
 
     public List<Place> getPlacesByMusic(int id){

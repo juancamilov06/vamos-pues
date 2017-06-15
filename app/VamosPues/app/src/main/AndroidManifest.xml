@@ -76,7 +76,28 @@
         <activity
             android:name=".main.MapActivity"
             android:label="@string/title_activity_map"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.BudgetActivity"
+            android:label="Presupuesto"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.BudgetResultsActivity"
+            android:label="@string/title_activity_budget_results"
+            android:theme="@style/AppTheme" />
+
+        <service android:name=".services.PromosService" />
+
+        <activity
+            android:name=".main.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.TermsActivity"
+            android:label="@string/title_activity_terms"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".main.PromosActivity" />
+        <activity android:name=".main.AboutActivity"></activity>
     </application>
 
 </manifest>

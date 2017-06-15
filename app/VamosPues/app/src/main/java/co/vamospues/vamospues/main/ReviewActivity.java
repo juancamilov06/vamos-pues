@@ -2,6 +2,7 @@ package co.vamospues.vamospues.main;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -51,7 +52,9 @@ public class ReviewActivity extends AppCompatActivity {
     private Context context;
     private RecyclerView reviewsListView;
     private Place place;
+    private DatabaseHandler database;
     private List<Review> reviews;
+    private boolean loaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class ReviewActivity extends AppCompatActivity {
         if (place != null) {
 
             context = ReviewActivity.this;
+            database = new DatabaseHandler(context);
             reviewsListView = (RecyclerView) findViewById(R.id.reviews_list);
             reviewsListView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -107,17 +111,16 @@ public class ReviewActivity extends AppCompatActivity {
                             final Review review = new Review();
                             review.setPlace(place);
                             review.setContent(content);
-                            review.setUsername("Villa");
+                            review.setUsername(database.getCurrentMail());
                             review.setRating(rating);
 
-                            StringRequest request = new StringRequest(Request.Method.POST, Services.BASE_URL + Services.REVIEW_ADD_SERVICE, new Response.Listener<String>() {
+                            StringRequest request = new StringRequest(Request.Method.POST, getPostReviewUrl(), new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     System.out.println(response);
                                     try {
                                         JSONObject responseObject = new JSONObject(response);
                                         int code = responseObject.getInt("code");
-
                                         if (code == Codes.CODE_SUCCESSFUL){
                                             Utils.showSnackbar("Reseña enviada con exito", ReviewActivity.this, R.id.activity_review);
                                             setUpList();
@@ -159,7 +162,6 @@ public class ReviewActivity extends AppCompatActivity {
                     dialog.show();
                 }
             });
-
             setUpList();
         } else {
             finish();
@@ -202,13 +204,30 @@ public class ReviewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private String getPostReviewUrl(){
+        return Services.BASE_URL + Services.REVIEW_ADD_SERVICE + "?token=" + database.getToken();
+    }
+
+    private String getReviewsUrl(){
+        return Services.BASE_URL + "place/" + place.getId() + "/reviews?token=" + database.getToken();
+    }
+
     private void setUpList(){
-        final String GET_REVIEWS_SERVICE = "place/" + place.getId() + "/reviews";
+
         final Dialog dialog = Utils.getAlertDialog(context);
-        StringRequest request = new StringRequest(Request.Method.GET, Services.BASE_URL + GET_REVIEWS_SERVICE, new Response.Listener<String>() {
+        dialog.show();
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
+
+        StringRequest request = new StringRequest(Request.Method.GET, getReviewsUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 dialog.dismiss();
+                loaded = true;
                 System.out.println("Response: " + response);
                 try {
                     JSONObject reviewObject = new JSONObject(response);
@@ -248,6 +267,7 @@ public class ReviewActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
                 Utils.showSnackbar("Error obteniendo los datos", ReviewActivity.this, R.id.activity_review);
             }
         }){

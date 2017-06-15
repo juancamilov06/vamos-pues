@@ -48,7 +48,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
             holder.nameLabel.setText(place.getName());
             String url = place.getImageUrl();
             if (!TextUtils.isEmpty(url)){
-                Picasso.with(context).load(url).into(holder.background);
+                Picasso.with(context).load(url).fit().centerCrop().into(holder.background);
             }
         }
     }

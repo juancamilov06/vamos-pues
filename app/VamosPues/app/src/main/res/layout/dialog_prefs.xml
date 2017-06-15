@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:background="@color/colorPrimaryDark">
+
+        <LinearLayout android:padding="16dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent" android:gravity="center"
+                android:layout_height="wrap_content">
+
+                <co.vamospues.vamospues.helpers.GillSansLightTextView
+                    android:layout_width="wrap_content"
+                    android:text="CUENTANOS "
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+                <co.vamospues.vamospues.helpers.GillSansSemiBoldTextView
+                    android:text="TUS GUSTOS"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <co.vamospues.vamospues.helpers.GillSansLightTextView
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="Con base en tu genero y musica favorita tendremos anuncios personalizados para ti"
+                android:layout_margin="8dp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content" />
+
+            <co.vamospues.vamospues.helpers.GillSansBoldTextView
+                android:layout_width="match_parent"
+                android:text="Selecciona un genero"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content" />
+
+            <Spinner android:id="@+id/music_spinner"
+                android:layout_width="match_parent"
+                android:popupBackground="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"/>
+
+            <co.vamospues.vamospues.helpers.GillSansBoldTextView
+                android:layout_width="match_parent"
+                android:text="Selecciona una zona"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content" />
+
+            <Spinner android:id="@+id/zone_spinner"
+                android:popupBackground="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/cancel_button"
+                style="?android:textAppearanceSmall"
+                android:layout_weight="0.7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Cancelar"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/finish_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="Confirmar"
+                android:layout_weight="0.5"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

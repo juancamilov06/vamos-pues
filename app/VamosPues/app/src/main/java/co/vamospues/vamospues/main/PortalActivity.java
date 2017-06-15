@@ -96,7 +96,6 @@ public class PortalActivity extends AppCompatActivity {
         });
 
         if (place != null) {
-
             CircularImageView placeImage = (CircularImageView) findViewById(R.id.place_image);
             Picasso.with(context).load(place.getImageUrl()).into(placeImage);
             ImageView placeBackground = (ImageView) findViewById(R.id.place_background);

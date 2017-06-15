@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -50,6 +52,7 @@ public class SplashActivity extends AppCompatActivity {
         context = SplashActivity.this;
         database = new DatabaseHandler(context);
         indicator = (AVLoadingIndicatorView) findViewById(R.id.indicator);
+
         if (isFirstRun()) {
             getDataFromServer();
         } else {
@@ -108,7 +111,7 @@ public class SplashActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
                 }
             });
@@ -137,15 +140,23 @@ public class SplashActivity extends AppCompatActivity {
                     int code = object.getInt("code");
                     if (code == Codes.CODE_SUCCESSFUL){
                         new InsertDataAsync().execute(object.getJSONObject("data"));
+                    } else {
+                        Snackbar.make(findViewById(R.id.activity_splash), "Error descargando los datos base", Snackbar.LENGTH_LONG)
+                                .setAction("Reintentar", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        getDataFromServer();
+                                    }
+                                }).show();
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Snackbar.make(findViewById(R.id.activity_splash), "Error en el servidor, intenta luego", Snackbar.LENGTH_LONG);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                Snackbar.make(findViewById(R.id.activity_splash), "Error en el servidor, intenta luego", Snackbar.LENGTH_LONG);
             }
         }){
             @Override
@@ -158,6 +169,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private class InsertDataAsync extends AsyncTask<JSONObject, Void, Void>{
+
+        private boolean error = false;
 
         @Override
         protected Void doInBackground(JSONObject... params) {
@@ -228,7 +241,7 @@ public class SplashActivity extends AppCompatActivity {
                     database.insertPlaces(places);
                 }
             } catch (JSONException e){
-
+                error = true;
             }
             return null;
         }
@@ -236,10 +249,21 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            setFirstTime(false);
-            indicator.smoothToHide();
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-            finish();
+            if (!error) {
+                setFirstTime(false);
+                indicator.smoothToHide();
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
+            } else {
+                database.truncateDatabase();
+                Snackbar.make(findViewById(R.id.activity_splash), "Error guardando los datos", Snackbar.LENGTH_LONG)
+                        .setAction("Reintentar", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                getDataFromServer();
+                            }
+                        }).show();
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ public class PlacesMapAdapter extends BaseAdapter {
 
         Place place = places.get(position);
         if (place != null){
-            Picasso.with(context).load(place.getImageUrl()).into(holder.placeImage);
+            Picasso.with(context).load(place.getImageUrl()).fit().centerCrop().into(holder.placeImage);
             holder.nameLabel.setText(place.getName());
         }
         return convertView;

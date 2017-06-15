@@ -20,6 +20,7 @@ import co.vamospues.vamospues.R;
 import co.vamospues.vamospues.adapters.ResultsAdapter;
 import co.vamospues.vamospues.database.DatabaseHandler;
 import co.vamospues.vamospues.helpers.ItemClickSupport;
+import co.vamospues.vamospues.helpers.Utils;
 import co.vamospues.vamospues.models.Place;
 
 public class ResultsActivity extends AppCompatActivity {

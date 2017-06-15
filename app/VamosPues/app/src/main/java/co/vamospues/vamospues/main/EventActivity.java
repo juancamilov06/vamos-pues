@@ -1,7 +1,9 @@
 package co.vamospues.vamospues.main;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -74,10 +76,21 @@ public class EventActivity extends AppCompatActivity {
         getData();
     }
 
+    private String getEventsUrl(){
+        return Services.BASE_URL + Services.EVENT_SERVICE + "?token=" + database.getToken();
+    }
+
     private void getData(){
         final Dialog dialog = Utils.getAlertDialog(context);
         dialog.show();
-        StringRequest request = new StringRequest(Request.Method.GET, Services.BASE_URL + Services.EVENT_SERVICE, new Response.Listener<String>() {
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
+
+        StringRequest request = new StringRequest(Request.Method.GET, getEventsUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 dialog.dismiss();
@@ -117,18 +130,39 @@ public class EventActivity extends AppCompatActivity {
                             eventsRecyclerView.setVisibility(View.GONE);
                             findViewById(R.id.events_not_found_view).setVisibility(View.VISIBLE);
                         }
+                    } else if (code == Codes.CODE_UNAUTHORIZED){
+                        Dialog dialog = Utils.getExpiredDialog(EventActivity.this);
+                        dialog.show();
                     } else {
-                        Utils.showSnackbar("Error obteniendo datos", EventActivity.this, R.id.activity_event);
+                        Snackbar.make(findViewById(R.id.activity_event), "Error obteniendo los eventos", Snackbar.LENGTH_LONG)
+                                .setAction("Reintentar", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        getData();
+                                    }
+                                }).show();
                     }
                 } catch (JSONException e) {
-                    Utils.showSnackbar("Error obteniendo datos", EventActivity.this, R.id.activity_event);
+                    Snackbar.make(findViewById(R.id.activity_event), "Error obteniendo los eventos", Snackbar.LENGTH_LONG)
+                            .setAction("Reintentar", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    getData();
+                                }
+                            }).show();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Utils.showSnackbar("Error obteniendo datos", EventActivity.this, R.id.activity_event);
+                Snackbar.make(findViewById(R.id.activity_event), "Error obteniendo los eventos", Snackbar.LENGTH_LONG)
+                        .setAction("Reintentar", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                getData();
+                            }
+                        }).show();
                 error.printStackTrace();
                 dialog.dismiss();
             }

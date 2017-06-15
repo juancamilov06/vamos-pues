@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                             JSONObject responseData = serverResponse.getJSONObject("data");
                                             boolean exists = responseData.getBoolean("exists");
                                             if (exists){
+
                                                 dialog.dismiss();
 
                                                 String token = responseData.getString("token");
@@ -95,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                                 finish();
+
                                             } else {
 
                                                 dialog.dismiss();
